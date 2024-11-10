@@ -11,6 +11,7 @@ env:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +25,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Run tests
-      env:
-        TEST_MODE: "true"
-      run: cargo test --verbose
+      run: cargo test --verbose  
