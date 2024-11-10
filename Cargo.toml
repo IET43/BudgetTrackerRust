@@ -4,3 +4,7 @@ version = "0.0.1"
 edition = "2021"
 
 [dependencies]
+
+[lib]
+name = "Budget_Tracker_Rust"
+path = "src/main.rs"
