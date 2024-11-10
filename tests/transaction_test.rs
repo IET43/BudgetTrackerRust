@@ -1,16 +1,15 @@
-use Budget_Tracker_Rust::transaction::{create_transaction, Transaction};
+use Budget_Tracker_Rust::transaction::{add_transaction, Transaction};
 
 #[test]
-fn test_create_transaction() {
-    let date = "2024-11-10".to_string();
-    let description = "Groceries".to_string();
-    let amount = 50.0;
-    let category = "Food".to_string();
+fn test_add_transaction_in_test_mode() {
+    std::env::set_var("TEST_MODE", "true");
 
-    let transaction = create_transaction(date.clone(), description.clone(), amount, category.clone());
+    let transaction = add_transaction();
 
-    assert_eq!(transaction.date, date);
-    assert_eq!(transaction.description, description);
-    assert_eq!(transaction.amount, amount);
-    assert_eq!(transaction.category, category);
+    assert_eq!(transaction.date, "2024-11-10");
+    assert_eq!(transaction.description, "Groceries");
+    assert_eq!(transaction.amount, 50.0);
+    assert_eq!(transaction.category, "Food");
+
+    std::env::remove_var("TEST_MODE");
 }
